@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+      integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <%-include("../partials/_header")%>
+      <h3>Add Story</h3>
+      <div class="row">
+        <form action="/stories" method="POST" class="col s12">
+          <div class="row">
+            <div class="input-field">
+              <input type="text" id="title" name="title" />
+              <label for="title">Title</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field">
+              <select id="status" name="status">
+                <option value="public" selected>Public</option>
+                <option value="private">Private</option>
+              </select>
+              <label for="status">Status</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field">
+              <h5>Tell Us Your Story:</h5>
+              <textarea id="body" name="body"></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <input type="submit" value="Save" class="btn" />
+            <a href="/dashboard" class="btn orange">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
+    integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o="
+    crossorigin="anonymous"
+  ></script>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.19.1/ckeditor.js"
+    integrity="sha512-Ooi9IbjM2SIDjQ02ENbPFuuORT8F8Rc+rowcYfLneDwKRxw1+gVVj5tciVmV/APnA/Ys+qy1MbNKK3k2EaAHcw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <script>
+    M.Sidenav.init(document.querySelector(".sidenav"));
+    M.FormSelect.init(document.querySelector("#status"));
+    CKEDITOR.replace("body", {
+      plugins: "wysiwygarea,toolbar,basicstyles,link",
+    });
+  </script>
+</html>
